@@ -20,6 +20,7 @@
                                         Sin categoría
                                     </p>
                                 @endif
+                                <span class="text-muted small fst-italic">Tiempo de lectura {{ $article->readDuration() }} min</span>
                                 <a href="{{route('article.show', compact('article'))}}" class="btn btn-info text-white"> Leer </a>
                             </div>
                             <p class="small fst-italic">

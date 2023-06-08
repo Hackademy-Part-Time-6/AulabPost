@@ -10,7 +10,10 @@
 <body>
     
     <x-navbar />
-    {{$slot}}
+    <div style="padding-bottom: 150px">
+        {{$slot}}
+    </div>
+    
     <x-footer />
     
 </body>
