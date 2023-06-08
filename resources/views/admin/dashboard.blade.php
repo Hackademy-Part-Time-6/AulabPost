@@ -8,13 +8,13 @@
     </div>
 
     @if (session('message'))
-        <div class="alert alert-success text-center">
+        <div class="container alert alert-success text-center">
             {{session('message')}}
         </div>
     @endif
 
     @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="container alert alert-danger text-center">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -66,8 +66,12 @@
             <div class="col-12">
                 <h2>Las categorías de la plataforma</h2>
                 <x-metainfo-table :metaInfos="$categories" metaType="category" />
+                <form action="{{ route('admin.storeCategory') }}" method="POST" class="d-flex">
+                    @csrf
+                    <input type="text" name="name" class="form-control me-2" placeholder="Añadir nueva categoría">
+                    <button type="submit" class="btn btn-success text-white">Añadir</button>
+                </form>
             </div>
         </div>
     </div>
-
 </x-layout>

@@ -19,6 +19,11 @@
                     <div class="card-footer text-muted">
                         <a href="{{ route('article.byCategory', ['category' => $article->category->id]) }}" class="small text-muted fst-italic">{{ $article->category->name }}</a>
                     </div>
+                    <p class="small fst-italic">
+                        @foreach ($article->tags as $tag )
+                            #{{ $tag->name }}
+                        @endforeach
+                    </p>
                     @if(Auth::user() && Auth::user()->is_revisor)
                         <a href="{{ route('revisor.acceptArticle', compact('article')) }}" class="btn btn-success text-white my-5">Aceptar</a>
                         <a href="{{ route('revisor.rejectArticle', compact('article')) }}" class="btn btn-danger text-white my-5">Rechazar</a>
