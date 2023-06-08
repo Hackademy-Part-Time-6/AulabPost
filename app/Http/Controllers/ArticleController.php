@@ -8,6 +8,7 @@ use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -38,7 +39,7 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Article $article)
     {
         //
         $request->validate([
@@ -59,7 +60,7 @@ class ArticleController extends Controller
             'user_id' => Auth::user()->id,
         ]);
 
-        $tags = explode(',', $request->tags);
+        $tags = explode(', ', $request->tags);
 
         foreach ($tags as $tag) {
             $newTag = Tag::updateOrCreate([
@@ -86,6 +87,8 @@ class ArticleController extends Controller
     public function edit(Article $article)
     {
         //
+        return view('article.edit', compact('article'));
+
     }
 
     /**
@@ -94,15 +97,56 @@ class ArticleController extends Controller
     public function update(Request $request, Article $article)
     {
         //
+        $request->validate([
+            'title' => 'required|min:5|unique:articles,title,' . $article->id,
+            'subtitle' => 'required|min:5|unique:articles,subtitle,' . $article->id,
+            'body' => 'required|min:10',
+            'image' => 'image',
+            'category' => 'required',
+            'tags' => 'required',
+        ]);
+
+        $article->update([
+            'title' => $request->title,
+            'subtitle' => $request->subtitle,
+            'body' => $request->body,
+            'category_id' => $request->category,
+        ]);
+
+        if ($request->image) {
+            Storage::delete($article->image);
+            $article->update([
+                'image' => $request->file('image')->store('public/images')
+            ]);
+        }
+
+        $tags = explode(', ', $request->tags);
+        $newTags = [];
+
+        foreach ($tags as $tag) {
+            $newTag = Tag::updateOrCreate([
+                'name' => $tag,
+            ]);
+            $newTags[] = $newTag->id;
+        }
+
+        $article->tags()->sync($newTags);
+
+        return redirect(route('writer.dashboard'))->with('message', 'Ha actualizado correctamente el artículo elegido');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Article $article)
-    {
-        //
+{
+    foreach ($article->tags as $tag) {
+        $article->tags()->detach($tag);
     }
+    $article->delete();
+
+    return redirect(route('writer.dashboard'))->with('message', 'Ha eliminado correctamente el artículo elegido');
+}
 
     public function byCategory(Category $category, User $user) {
         $articles = $user->articles->sortByDesc('created_at')->filter(function($article){

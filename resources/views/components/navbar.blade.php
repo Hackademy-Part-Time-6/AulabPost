@@ -16,6 +16,9 @@
                         @if(Auth::user()->is_revisor)
                             <li><a href="{{ route('revisor.dashboard') }}" class="dropdown-item">Panel de revisión</a></li>
                         @endif
+                        @if(Auth::user()->is_writer)
+                            <li><a href="{{ route('writer.dashboard') }}" class="dropdown-item">Panel de redacción</a></li>
+                        @endif
                         <li><a href="{{ route('profile') }}" class="dropdown-item">Perfil</a></li>
                         <li><a href="{{ route('article.create') }}" class="dropdown-item">Crear un artículo</a></li>
                         <li><hr class="dropdown-divider"></li>
