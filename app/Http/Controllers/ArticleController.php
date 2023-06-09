@@ -18,7 +18,7 @@ class ArticleController extends Controller
      */
 
     public function __construct() {
-        $this->middleware('auth')->except('index', 'show','articleSearch');
+        $this->middleware('auth')->except('index', 'show','articleSearch','byCategory');
     }
     
     public function index()
@@ -141,8 +141,7 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Article $article)
-{
+    public function destroy(Article $article) {
     foreach ($article->tags as $tag) {
         $article->tags()->detach($tag);
     }
@@ -151,14 +150,22 @@ class ArticleController extends Controller
     return redirect(route('writer.dashboard'))->with('message', 'Ha eliminado correctamente el artículo elegido');
 }
 
-    public function byCategory(Category $category) {
-        $articles = Article::where('category_id', $category->id)
-            ->where('is_accepted', true)
-            ->orderBy('created_at', 'desc')
-            ->get();
+public function byCategory(Request $request, Category $category)
+{
+    $query = $request->input('query');
 
-        return view('article.by-category', compact('category', 'articles'));
-    }
+    $articles = Article::where('category_id', $category->id)
+                        ->where('is_accepted', true)
+                        ->where(function ($queryBuilder) use ($query) {
+                            $queryBuilder->where('title', 'like', "%$query%")
+                                            ->orWhere('subtitle', 'like', "%$query%");
+                        })
+                        ->orderBy('created_at', 'desc')
+                        ->get();
+
+    return view('article.by-category', compact('category', 'articles'));
+}
+
 
 
     public function byWriter(User $user) {

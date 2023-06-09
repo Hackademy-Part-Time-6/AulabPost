@@ -11,6 +11,9 @@
 <body>
     
     <x-navbar />
+
+    <a href="#"><i class="fa-solid fa-arrow-up up-page"></i></a>
+
     <div style="padding-bottom: 150px">
         {{$slot}}
     </div>

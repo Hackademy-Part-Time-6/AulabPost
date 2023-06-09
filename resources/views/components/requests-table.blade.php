@@ -16,15 +16,15 @@
                 <td>
                     @switch($role)
                         @case('administrador')
-                            <a href="{{ route('admin.setAdmin', ['user' => $user]) }}" class="btn btn-info text-white">{{ $role }} activado</a>
+                            <a href="{{ route('admin.setAdmin', ['user' => $user]) }}" class="btn cool-blue text-white">{{ $role }} activado</a>
                             @break
 
                         @case('revisor')
-                            <a href="{{ route('admin.setRevisor', ['user' => $user]) }}" class="btn btn-info text-white">{{ $role }} activado</a>
+                            <a href="{{ route('admin.setRevisor', ['user' => $user]) }}" class="btn cool-blue text-white">{{ $role }} activado</a>
                             @break
 
                         @case('redactor')
-                            <a href="{{ route('admin.setWriter', ['user' => $user]) }}" class="btn btn-info text-white">{{ $role }} activado</a>
+                            <a href="{{ route('admin.setWriter', ['user' => $user]) }}" class="btn cool-blue text-white">{{ $role }} activado</a>
                             @break
                     @endswitch
                 </td>

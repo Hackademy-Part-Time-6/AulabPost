@@ -47,14 +47,15 @@ class AdminController extends Controller
         return redirect(route('admin.dashboard'))->with('message', 'Ha hecho correctamente redactor al usuario elegido');
     }
 
+
     public function becomeAdmin() {
         Mail::to('admin@theaulabpost.es')->send(new CareerRequestMail(Auth::user()));
-        return redirect()->route('welcome')->withMessage(['type'=>'success','text'=>'Solicitud enviada con éxito, pronto sabrás algo, gracias!']);
+        return redirect()->route('welcome')->with('message', 'Solicitud enviada con éxito, pronto sabrás algo, gracias!');
     }
 
     public function makeAdmin(User $user) {
         Artisan::call('nombre_database:make-user-admin',['email'=>$user->email]);
-        return redirect()->route('welcome')->withMessage(['type'=>'success','text'=>'Ya tenemos un colaborador más']);
+        return redirect()->route('welcome')->with('message', 'Ya tenemos un colaborador más');
     }
 
     public function editTag(Request $request, Tag $tag) {

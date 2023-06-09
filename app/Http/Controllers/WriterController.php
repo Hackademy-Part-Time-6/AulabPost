@@ -15,12 +15,12 @@ class WriterController extends Controller
     //
     public function becomeWriter() {
         Mail::to('admin@theaulabpost.es')->send(new CareerRequestMail(Auth::user()));
-        return redirect()->route('welcome')->withMessage(['type'=>'success','text'=>'Solicitud enviada con éxito, pronto sabrás algo, gracias!']);
+        return redirect()->route('welcome')->with('message','Solicitud enviada con éxito, pronto sabrás algo, gracias!');
     }
 
     public function makeWriter(User $user) {
         Artisan::call('nombre_database:make-user-writer',['email'=>$user->email]);
-        return redirect()->route('welcome')->withMessage(['type'=>'success','text'=>'Ya tenemos un colaborador más']);
+        return redirect()->route('welcome')->with('message','Ya tenemos un colaborador más');
     }
 
     public function dashboard() {

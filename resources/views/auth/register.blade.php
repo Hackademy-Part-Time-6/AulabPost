@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
                 @if ($errors->any())
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger message-space">
                         <ul>
                             
                             @foreach($errors as $error)
@@ -22,6 +22,7 @@
                 @endif
             </div>
 
+            <div style="height: 60vh">
             <form class="card p-5 shadow" action="{{ route('register') }}" method="post">
                 @csrf
 
@@ -46,6 +47,7 @@
                     <p class="small mt-2">¿Estás ya registrado?<a class="text-decoration-none ms-2" href="{{ route('login') }}">Click aqui</a></p>
                 </div>
             </form>
+            </div>
         </div>
     </div>
 </x-layout>

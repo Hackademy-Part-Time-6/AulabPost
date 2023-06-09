@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container p-5 blue-body text-center text-dark">
+    <div class="container p-5 blue-body text-center text-white">
         <div class="row justify-content-center">
             <h1 class="display-1">
                 Modificar el artículo
@@ -57,7 +57,7 @@
                 <span class="small fst-italic">Divide las etiquetas con una coma</span>
             </div>
             <div class="mt-2 text-center">
-                <button class="btn btn-info text-white">Añadir un artículo</button>
+                <button class="btn cool-blue text-white">Añadir un artículo</button>
                 <a href="{{ route('welcome') }}" class="btn btn-outline-info">Volver al inicio</a>
             </div>
         </form>

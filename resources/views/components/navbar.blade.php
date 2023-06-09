@@ -1,9 +1,12 @@
-<nav class="container navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('welcome') }}">Aulab</a>
-        
+        <a class="navbar-brand" href="{{ route('welcome') }}">Post Letters</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
+                <!-- Enlaces de navegación aquí -->
                 @auth
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -42,6 +45,25 @@
                 </li>
                 @endguest
             </ul>
+            
+            <!-- Div de categorías en dispositivos pequeños -->
+            <div class="col-md-4 mb-4 category-list d-sm-block d-md-none">
+                <div class="card blue-body">
+                    <div class="card-body blue-body">
+                        <h5 class="card-title text-white text-center" style="font-size: 2rem;">Categorías</h5>
+                        <ul class="list-group">
+                            @foreach ($categories as $category)
+                                <li class="list-group-item categories text-center" style="font-size: 1.5rem;">
+                                    <a href="{{ route('article.byCategory', ['category' => $category->id]) }}">{{ $category->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </nav>
+
+
+

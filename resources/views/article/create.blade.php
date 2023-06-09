@@ -1,6 +1,6 @@
 <x-layout>
 
-    <div class="container p-5 blue-body text-center text-dark">
+    <div class="container p-5 blue-body text-center text-white">
         <div class="row justify-content-center">
             <h1 class="display-1">
                 Artículo nuevo

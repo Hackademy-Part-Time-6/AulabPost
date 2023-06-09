@@ -84,4 +84,3 @@ Route::get('/profile', [PublicController::class, 'profile'])->middleware('auth')
 
 Route::get('/article/{article:slug}/show', [ArticleController::class, 'show'])->name('article.show');
 
-

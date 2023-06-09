@@ -8,20 +8,20 @@
     </div>
 
     @if (session('message'))
-        <div class="container alert alert-success text-center">
+        <div class="container alert alert-success text-center message-space">
             {{session('message')}}
         </div>
     @endif
 
     @if ($errors->any())
-        <div class="container alert alert-danger text-center">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    <div class="container alert alert-danger text-center message-space">
+        <ul class="list-unstyled">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
     <div class="container my-5">
         <div class="row justify-content-center">
@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    <hr>
+    <hr style="width: 60%; margin-left: auto; margin-right: auto;">
     <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-12">
@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    <hr>
+    <hr style="width: 60%; margin-left: auto; margin-right: auto;">
     <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-12">
