@@ -3,3 +3,41 @@
 .no-underline {
     text-decoration: none;
 }
+
+body {
+    background-color: #f8f8f8;
+}
+
+.cool-blue {
+    background-color: #394e70;
+}
+
+.cool-blue:hover {
+    background-color: #8196b8;
+}
+
+.blue-body {
+    background-color: #394e70;
+}
+
+.btn.btn-outline-info {
+    border-color: #394e70;
+    color: #394e70;
+}
+
+.btn.btn-outline-info:hover {
+    background-color: #8196b8;
+}
+
+.category-list .card-body a {
+    text-decoration: none;
+    color: black;
+}
+
+.category-list .list-group-item:hover {
+    background-color: #8196b8;
+}
+
+.categories {
+    border: 3px solid #394e70;
+}

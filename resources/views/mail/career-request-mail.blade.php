@@ -14,9 +14,14 @@
     <p>Recibido de {{$info['email']}}</p>
     <h4>Mensaje: </h4>
     <p>{{$info['message']}}</p>
-    <a href="{{route('admin.make',$info['user'])}}">Aceptar solicitud para administrador</a><br>
-    <a href="{{route('revisor.make',$info['user'])}}">Aceptar solicitud para revisor</a><br>
-    <a href="{{route('writer.make',$info['user'])}}">Aceptar solicitud para redactor</a><br>
+    
+    @if ($info['role'] === 'admin')
+        <a href="{{route('admin.make',$info['user'])}}">Aceptar solicitud para administrador</a><br>
+    @elseif ($info['role'] === 'revisor')
+        <a href="{{route('revisor.make',$info['user'])}}">Aceptar solicitud para revisor</a><br>
+    @elseif ($info['role'] === 'writer')
+        <a href="{{route('writer.make',$info['user'])}}">Aceptar solicitud para redactor</a><br>
+    @endif
 
 </body>
 </html>

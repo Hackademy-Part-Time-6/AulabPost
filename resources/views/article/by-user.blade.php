@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container">
+    <div class="container blue-body">
         <h1>Artículos de {{ $user->name }}</h1>
         
         <div class="row">

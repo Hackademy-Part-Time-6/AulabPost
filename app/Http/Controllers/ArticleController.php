@@ -151,12 +151,15 @@ class ArticleController extends Controller
     return redirect(route('writer.dashboard'))->with('message', 'Ha eliminado correctamente el artículo elegido');
 }
 
-    public function byCategory(Category $category, User $user) {
-        $articles = $user->articles->sortByDesc('created_at')->filter(function($article){
-            return $article->is_accepted === true;
-        });
+    public function byCategory(Category $category) {
+        $articles = Article::where('category_id', $category->id)
+            ->where('is_accepted', true)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
         return view('article.by-category', compact('category', 'articles'));
     }
+
 
     public function byWriter(User $user) {
         $articles = $user->articles->sortByDesc('created_at')->filter(function($article){

@@ -1,6 +1,6 @@
 <x-layout>
 
-    <div class="container p-5 bg-info text-center text-white">
+    <div class="container p-5 blue-body text-center text-dark">
         <div class="row justify-content-center">
             <h1 class="display-1">
                 Artículo nuevo
@@ -14,7 +14,7 @@
                 {{session('message')}}
             </div>
         @endif
-    <div class="container my-5">
+    <div class="container my-5 text-left">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
                 @if ($errors -> any())
@@ -59,8 +59,8 @@
                     <label for="body" class="form-label">Cuerpo del texto: </label>
                     <textarea name="body" id="body" cols="30" rows="10" class="form-control">{{old('body')}}</textarea>
                 </div>
-                <div class="mt-2">
-                    <button class="btn btn-info text-white">Crear artículo</button>
+                <div class="mt-2 text-center">
+                    <button class="btn cool-blue text-white">Crear artículo</button>
                     <a href="{{route('welcome')}}" class="btn btn-outline-info">Volver a inicio</a>
                 </div>
                 </form>

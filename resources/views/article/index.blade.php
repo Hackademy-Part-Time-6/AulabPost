@@ -2,34 +2,30 @@
     <div class="container">
         <h1>Lista de artículos</h1>
         <div class="row justify-content-around">
-            @foreach ($articles as $article)
-                <div class="col-12 col-md-3">
-                    <div class="card">
-                        <img src="{{Storage::url($article->image)}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{$article->title}}</h5>
-                                <p class="card-text">{{$article->subtitle}}</p>
-                                <p class="small text-muted fst-italic">{{$article->category->name}}</p>
+            @foreach ($articles as $key => $article)
+                @if ($key < count($articles) - 1)
+                    <div class="col-12 col-md-4 mb-4 text-center">
+                        <a href="{{ route('article.show', $article) }}" class="card blue-body text-decoration-none" style="color: white;">
+                            <img src="{{ Storage::url($article->image) }}" class="card-img-top" alt="Imagen del artículo">
+                            <div class="card-body blue-body text-white">
+                                <h5 class="card-title">{{ $article->title }}</h5>
+                                <p class="card-text">{{ $article->subtitle }}</p>
+                                <p class="small text-muted fst-italic">
+                                    <span class="text-white">{{ $article->category->name }}</span>
+                                </p>
                             </div>
-                            <div class="card-footer text-muted d-flex justify-content-between align-items-center">
-                                Publicado el {{$article->created_at->format('d/m/Y')}} por {{$article->user->name}}
-                                @if($article->category)
-                                    <a href="{{ route('article.byCategory', ['category' => $article->category->id]) }}" class="small text-muted fst-italic">{{ $article->category->name }}</a>
-                                @else
-                                    <p class="small text-muted fst-italic">
-                                        Sin categoría
-                                    </p>
-                                @endif
-                                <span class="text-muted small fst-italic">Tiempo de lectura {{ $article->readDuration() }} min</span>
-                                <a href="{{route('article.show', compact('article'))}}" class="btn btn-info text-white"> Leer </a>
+                            <div class="card-footer blue-body text-muted d-flex justify-content-between align-items-center">
+                                <span style="color: white">Publicado el {{ $article->created_at->format('d/m/Y') }} por {{ $article->user->name }}</span>
+                                <span class="small fst-italic" style="color: white;"><i class="fas fa-clock"></i> {{ $articles[count($articles) - 1]->readDuration() }} min</span>
                             </div>
-                            <p class="small fst-italic">
-                                @foreach ($article->tags as $tag )
-                                    #{{ $tag->name }}
+                            <p class="small fst-italic blue-body">
+                                @foreach ($article->tags as $tag)
+                                <span class="text-white text-left">#{{ $tag->name }}</span>
                                 @endforeach
                             </p>
+                        </a>
                     </div>
-                </div>
+                @endif
             @endforeach
         </div>
     </div>

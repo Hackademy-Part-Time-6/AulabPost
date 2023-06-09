@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container p-5 bg-info text-center text-white">
+    <div class="container p-5 blue-body text-center text-dark">
         <div class="row justify-content-center">
             <h1 class="display-1">
                 Modificar el artículo
@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container text-left">
         <form action="{{ route('article.update', $article) }}" method="POST" enctype="multipart/form-data" class="card p-5 shadow">
             @csrf
             @method('PUT')
@@ -56,7 +56,7 @@
                 <input name="tags" id="tags" class="form-control" value="{{ $article->tags->implode('name', ',') }}">
                 <span class="small fst-italic">Divide las etiquetas con una coma</span>
             </div>
-            <div class="mt-2">
+            <div class="mt-2 text-center">
                 <button class="btn btn-info text-white">Añadir un artículo</button>
                 <a href="{{ route('welcome') }}" class="btn btn-outline-info">Volver al inicio</a>
             </div>

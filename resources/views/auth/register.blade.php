@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container bg-info text-center text-white">
+    <div class="container blue-body text-center text-white">
         <div class="row justify-content-center">
             <h1 class="display-1">
                 Registrarse
@@ -41,9 +41,9 @@
                     <label for="password_confirmation" class="form-label">Confirmar contraseña:</label>
                     <input name="password_confirmation" type="password" class="form-control" value="{{ old('password_confirmation') }}">
                 </div>
-                <div class="mt-2">
-                    <button class="btn bg-info text-white">Registrarse</button>
-                    <p class="small mt-2">¿Estás ya registrado?<a href="{{ route('login') }}">Click aqui</a></p>
+                <div class="mt-2 text-center">
+                    <button class="btn cool-blue text-white">Registrarse</button>
+                    <p class="small mt-2">¿Estás ya registrado?<a class="text-decoration-none ms-2" href="{{ route('login') }}">Click aqui</a></p>
                 </div>
             </form>
         </div>

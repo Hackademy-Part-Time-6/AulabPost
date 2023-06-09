@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container p-5 bg-info text-center text-white">
+    <div class="container p-5 cool-blue text-center">
         <div class="row justify-content-center">
             <h1 class="display-1">
                 Bienvenido Redactor
@@ -12,7 +12,7 @@
             </div>
         @endif
 
-        <div class="container my-5">
+        <div class="container my-5 text-dark">
             <div class="row justify-content-center">
                 <div class="col-12">
                     <h2>Artículos en fase de revision</h2>

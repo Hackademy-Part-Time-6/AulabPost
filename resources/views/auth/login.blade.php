@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container bg-info text-center text-white">
+    <div class="container blue-body text-center text-white">
         <div class="row justify-content-center">
             <h1 class="display-1">
                 Iniciar Sesión
@@ -34,9 +34,9 @@
                     <input name="password" type="password" class="form-control" value="{{ old('password') }}">
                 </div>
 
-                <div class="mt-2">
-                    <button class="btn bg-info text-white">Iniciar Sesión</button>
-                    <p class="small mt-2">¿No estás registrado?<a href="{{ route('register') }}">Click aqui</a></p>
+                <div class="mt-2 text-center">
+                    <button class="btn cool-blue text-white">Iniciar Sesión</button>
+                    <p class="small mt-2">¿No estás registrado?<a class="text-decoration-none ms-2" href="{{ route('register') }}">Click aqui</a></p>
                 </div>
             </form>
         </div>

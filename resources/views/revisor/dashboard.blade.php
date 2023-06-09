@@ -1,5 +1,5 @@
 1 <x-layout>
-    <div class="container p-5 bg-info text-white">
+    <div class="container p-5 blue-body text-white text-center">
         <div class="row justify-content-center">
             <h1 class="display-1">
                 Bienvenido Revisor
